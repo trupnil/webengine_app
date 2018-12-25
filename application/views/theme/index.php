@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from wrappixel.com/demos/admin-templates/admin-pro/dark/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 06:36:38 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="<?php echo base_url() ?>resource/image/png" sizes="16x16" href="<?php echo base_url() ?>/assets/images/favicon.png">
-    <title>Admin Pro Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
+    <title>Webengine Product</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>resource/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- page css -->
@@ -22,40 +20,46 @@
     
     <!-- You can change the theme colors from here -->
     <link href="<?php echo base_url() ?>resource/css/colors/default-dark.css" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+
+    .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    box-shadow: -5px -1px 27px #00c1c1;
+}
+
+    </style>
+    
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <div class="preloader">
+   <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Admin Pro</p>
+            <p class="loader__label">WEBENGINE CREATEION</p>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(<?php echo base_url() ?>resource//assets/images/background/login-register.jpg);">
+  
+ 
+
+    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(<?php echo base_url() ?>resource/ss.jpg);">
+   
+
+
         <div class="login-box card">
             <div class="card-body">
                 <form class="form-horizontal form-material"  method="POST" action ="<?php echo base_url() ?>User/auth">
                     <a href="javascript:void(0)" class="text-center db"><img src="<?php echo base_url() ?>resource/assets/images/logo-icon.png" alt="Home" /><br/><img src="../assets/images/logo-text.png" alt="Home" /></a>
                     <div class="form-group m-t-40">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" name="email" placeholder="Email">
+                            <input class="form-control" id="login_email" type="text" name="email" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" name="password" placeholder="Password">
+                            <input class="form-control" id="login_pass" type="password"  name="password" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -68,7 +72,7 @@
                     </div>
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
-                            <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">Log In</button>
+                            <button id="login_submit" class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">Log In</button>
                         </div>
                     </div>
                     <div class="row">
@@ -77,11 +81,16 @@
                         </div>
                     </div>
                     <div class="form-group m-b-0">
-                        <div class="col-sm-12 text-center">
+                        <div class="col-sm-12 text-center" >
+                         <span style="color:green;">  <?php if(!empty($this->session->flashdata('item')))
+                {
+                    echo $this->session->flashdata('item');
+                } ?> </span>
                             Don't have an account? <a href="<?php echo base_url() ?>User/signup" class="text-primary m-l-5"><b>Sign Up</b></a>
                         </div>
                     </div>
                 </form>
+
                 <form class="form-horizontal" id="recoverform" action="https://wrappixel.com/demos/admin-templates/admin-pro/dark/index.html">
                     <div class="form-group ">
                         <div class="col-xs-12">
@@ -91,7 +100,7 @@
                     </div>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Email">
+                            <input class="form-control" type="text"  placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group text-center m-t-20">
@@ -99,10 +108,11 @@
                             <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
                         </div>
                     </div>
-                </form>
+  </form>
             </div>
         </div>
     </section>
+    <script src="<?php echo base_url() ?>resource/vadidation.js" type="text/javascript"></script>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
@@ -128,6 +138,24 @@
             $("#loginform").slideUp();
             $("#recoverform").fadeIn();
         });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+$(document).ready(function()){
+alert();
+$('#login_submit').click(function(){
+
+var login_email = $('#login_email').val();
+var login_pass = $('#login_pass').val();
+alert();
+
+});
+
+
+
+};
     </script>
     
 </body>

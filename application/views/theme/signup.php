@@ -22,12 +22,16 @@
     
     <!-- You can change the theme colors from here -->
     <link href="<?php echo base_url() ?>resource/css/colors/megna-dark.css" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+     <style type="text/css">
+
+    .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    box-shadow: -5px -1px 27px #00c1c1;
+}
+
+    </style>
 </head>
 
 <body>
@@ -43,7 +47,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(<?php echo base_url() ?>resource/assets/images/background/login-register.jpg);">
+    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(<?php echo base_url() ?>resource/ss.jpg);">
         <div class="login-box card">
             <div class="card-body">
                 <form method="POST" class="form-horizontal form-material" id="loginform" action="<?php echo base_url() ?>User/registration">

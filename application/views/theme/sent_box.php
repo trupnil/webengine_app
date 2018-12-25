@@ -21,19 +21,12 @@
     <link href="<?php echo base_url()  ?>resource/css/pages/inbox.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="<?php echo base_url()  ?>resource/css/colors/megna-dark.css" id="theme" rel="stylesheet">
-   <style type="text/css">
-
-   .card-no-border .left-sidebar, .card-no-border .sidebar-nav {
-    background: #242a33;
-    box-shadow: 4px 0px 19px #00c1c1;
-}
-
-.card-no-border .card {
-    border: 0px;
-    border-radius: 0px;
-    -webkit-box-shadow: none;
-    box-shadow: 3px 4px 9px #07b0b1;
-   </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 
 <body class="fix-header card-no-border fix-sidebar">
@@ -100,7 +93,6 @@
                             <div class="row">
                                <?php $this->load->view('theme/mail_sidebar'); ?>
                                 <div class="col-xlg-10 col-lg-9 col-md-8 bg-light-part b-l">
-                                     <h1><?php if(!empty($this->session->flashdata('message_sent'))){  echo $this->session->flashdata('message_sent'); }  ?></h1>
                                     <div class="card-body">
                                         <div class="btn-group m-b-10 m-r-10" role="group" aria-label="Button group with nested dropdown">
                                             <button type="button" class="btn btn-secondary font-18"><i class="mdi mdi-inbox-arrow-down"></i></button>
@@ -123,16 +115,13 @@
                                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#">Mark as all read</a> <a class="dropdown-item" href="#">Dropdown link</a> </div>
                                         </div>
                                     </div>
-
                                     <div class="card-body p-t-0">
-
                                         <div class="card b-all shadow-none">
-
                                             <div class="inbox-center table-responsive">
                                                 <table class="table table-hover no-wrap">
                                                     <tbody>
                                                         <?php
-                                                        foreach ($inbox as $res) { ?>
+                                                        foreach ($sent_message as $res) { ?>
 
                                                         <tr class="unread">
                                                             <td style="width:40px">
@@ -143,8 +132,8 @@
                                                             </td>
                                                             <?php $position=5; ?>
                                                             <td style="width:40px" class="hidden-xs-down"><i class="fa fa-star-o"></i></td>
-                                                            <td class="hidden-xs-down"><?php echo $res->sender_id ?></td>
-                                                            <td class="max-texts"> <a href="<?php  echo base_url() ?>User/message_details/<?php echo $res->message_id; ?>" /><span class="label label-info m-r-10">Work</span> <?php echo $res->messge_text; ?> </td>
+                                                            <td class="hidden-xs-down"><?php echo $res->reciver_id ?></td>
+                                                            <td class="max-texts"> <a href="<?php  echo base_url() ?>User/message_details/<?php echo $res->message_id; ?>" /><span class="label label-info m-r-10">Work</span> <?php echo base64_decode($res->messge_text); ?> </td>
                                                             <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
                                                             <td class="text-right"> <?php echo $res->timedate; ?> </td>
                                                         </tr>
